@@ -1,0 +1,10 @@
+<h1> Lista de requisitos</h1>
+{% if poll_list %}
+    <ul>
+        {%  for p in poll_list %}
+            <li><a href="{% url details p.id %}">{{ p.questao }}</a></li>
+        {% endfor %}
+    </ul>
+{%  else %}
+<p> No polls available</p>
+{% endif %}
