@@ -13,7 +13,8 @@ from polls.models import Poll, Choice
 
 def index(request):
     poll_list = Poll.objects.order_by('data_publicacao')
-    return render_to_response('index.html', {'poll_list': poll_list})
+    return render_to_response('index.html', RequestContext(request, {
+                                                'poll_list': poll_list}))
 
 
 @ensure_csrf_cookie
