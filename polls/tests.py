@@ -6,11 +6,14 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from pools.models imports Poll
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+class PollTest(TestCase):
+    def setUp(self):
+        Poll.objects.create(questao="01", data_publicacao="11/11/2016 21:00:00")
+        
+    def Pooll_contem_questoes(self):
+        questao_1 = Poll.objects.get(questao="00")
+        self.assertNotEqual(questao1, "01")
+    
