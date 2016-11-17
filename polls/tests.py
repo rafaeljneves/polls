@@ -16,4 +16,4 @@ class PollTest(TestCase):
     def Pooll_contem_questoes(self):
         questao_1 = Poll.objects.get(questao="00")
         self.assertNotEqual(questao1, "01")
-    
+    git
