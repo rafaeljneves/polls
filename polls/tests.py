@@ -2,8 +2,7 @@
 This file demonstrates writing tests using the unittest module. These will pass
 when you run "manage.py test".
 
-Replace this wi
-th more appropriate tests for your application.
+Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
@@ -17,4 +16,8 @@ class PollTest(TestCase):
     def Pooll_contem_questoes(self):
         questao_1 = Poll.objects.get(questao="00")
         self.assertNotEqual(questao1, "01")
-    git
+
+    def Pooll_contem_nao_contem questoes(self):
+        questao_1 = Poll.objects.get(questao="")
+        self.assertEqual(questao1, "")
+    
