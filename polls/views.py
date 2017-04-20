@@ -1,6 +1,4 @@
 # Create your views here.
-import datetime
-
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
@@ -9,6 +7,7 @@ from django.core.context_processors import csrf
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 from polls.models import Poll, Choice
+from time import gmtime, strftime
 
 
 def index(request):
@@ -53,6 +52,6 @@ def vote(request, poll_id):
 
 
 def hora_certa(request):
-    now = datetime.datetime.now()
-    html = "<html><body>Hora Certa: %s</body></html>" % now
+    data_hora = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    html = "<html><body>Hora Certa: %s</body></html>" % data_hora
     return HttpResponse(html)
