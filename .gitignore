@@ -1,10 +1,8 @@
-syntax: glob
+# syntax: glob
 # config pycharm #
 ###################
 *.pyc
-/_MyDjangoApp/__init__.pyc
-/_MyDjangoApp/settings.pyc
-/_MyDjangoApp/wsgi.pyc
+/_MyDjangoApp/*.pyc
 /.idea/
 *.xml
 *.pyc
