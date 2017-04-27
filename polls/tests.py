@@ -5,12 +5,27 @@ when you run "manage.py test".
 Replace this with more appropriate tests for your application.
 """
 
-from django.test import TestCase
+from django.http import HttpResponseRedirect, HttpResponse
+#from django.test import TestCase
+#from polls.views import vote
+import unittest
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
+class SimpleTest(unittest.TestCase):
+    def setUp(self):
+        self.test = 1
+        pass
+
+    def test_voto_nao_deve_ser_nulo(self):
         """
-        Tests that 1 + 1 always equals 2.
+        dado um voto nulo deve falhar
         """
-        self.assertEqual(1 + 1, 2)
+        self.test = 1#vote(request=0)
+        self.assertFalse(self.test, "test_voto_nao_deve_ser_nulo" )
+
+    def tearDown(self):
+        self.test = 0
+        pass
+
+
+
