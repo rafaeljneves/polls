@@ -3,18 +3,24 @@ from django.shortcuts import render_to_response, get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from django.core.context_processors import csrf
+from django.template.loader import get_template
+from django.template.context_processors import csrf
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 from polls.models import Poll, Choice
 from time import gmtime, strftime
 
 
+
 def index(request):
     poll_list = Poll.objects.order_by('data_publicacao')
-    return render_to_response('index.html', RequestContext(request, {
-                                                'poll_list': poll_list}))
 
+    #template = get_template('index.html')
+    #html = template.render({'poll_list': poll_list}, request)
+
+    #return render_to_response('index.html', RequestContext(request, {
+    #                                            'poll_list': poll_list}))
+    return render_to_response('index.html', {'poll_list': poll_list})
 
 @ensure_csrf_cookie
 def details(request, poll_id):

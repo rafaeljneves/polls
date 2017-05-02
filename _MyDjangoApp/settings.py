@@ -1,7 +1,7 @@
 # Django settings for _MyDjangoApp project.
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+#TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -91,11 +91,11 @@ STATICFILES_FINDERS = (
 SECRET_KEY = 'h3m3_6uxe%jc&amp;@jyv2x#cdqtg+o-z%5v^_(wn6dhfql6+f34v3'
 
 # List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
+#TEMPLATE_LOADERS = (
+#    'django.template.loaders.filesystem.Loader',
+#    'django.template.loaders.app_directories.Loader',
+##     'django.template.loaders.eggs.Loader',
+#)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -113,9 +113,9 @@ ROOT_URLCONF = '_MyDjangoApp.urls'
 WSGI_APPLICATION = '_MyDjangoApp.wsgi.application'
 
 
-TEMPLATE_DIRS = (
-    # os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),
-)
+#TEMPLATE_DIRS = (
+    #os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),
+#)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -160,3 +160,18 @@ LOGGING = {
         },
     }
 }
+
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [os.path.join(PROJECT_ROOT, 'templates')],
+    'OPTIONS': {
+        'debug':DEBUG,
+        'loaders': [
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ],
+        'context_processors': [
+                "django.contrib.auth.context_processors.auth",
+            ],
+    },
+}]
