@@ -22,15 +22,23 @@ class SimpleTest(TestCase):
         """
         self.assertEqual(self.questao_teste.votar(), 'O que voce achou do "teste"?')
 
-"""
-    def test_deve_acessar_questao(self):
 
-        #Faz uma requisicao GET e
-        #verifica se a resposta foi 200 OK.
-
+    def test_deve_acessar_questao_de_votacao(self):
+        """
+        Faz uma requisicao GET e
+        verifica se a resposta foi 200 OK.
+        """
         response = self.client.get('/polls/1/')
         self.failUnlessEqual(response.status_code, 200)
-"""
+
+    def test_deve_acessar_resultado_de_votacao(self):
+        """
+        Faz uma requisicao GET e
+        verifica se a resposta foi 200 OK.
+        """
+        response = self.client.get('/polls/1/results/')
+        self.failUnlessEqual(response.status_code, 200)
+
 
     #def tearDown(self):
     #    self.test = 0
