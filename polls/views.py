@@ -9,7 +9,7 @@ from polls.models import Poll, Choice
 from time import gmtime, strftime
 
 
-def index():
+def index(request):
     poll_list = Poll.objects.order_by('data_publicacao')
     return render_to_response('index.html', {'poll_list': poll_list})
 

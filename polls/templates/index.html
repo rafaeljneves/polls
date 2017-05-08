@@ -1,3 +1,6 @@
+{% load static %}
+<img src="{% static "img/poll.jpg" %}" alt="imagem"/>
+
 {% if poll_list %}
     <ul>
     {% for p in poll_list %}
