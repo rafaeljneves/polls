@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Poll(models.Model):
@@ -16,6 +17,7 @@ class Choice(models.Model):
     poll = models.ForeignKey(Poll)
     choice = models.CharField(max_length=200)
     votos = models.IntegerField()
+
 
 
 

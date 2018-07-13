@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" type="text/css" href='{% static "css/estilo.css" %}'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+    // jquery
+    function session_left(){
+      var content = document.getElementById("session_left").innerText;
+      content = content -1;
+      $.get("calc_session_left.php",function(data){
+        $("#session_left").html(data);
+      });
+
+      document.getElementById("session_left").textContent=content;
+    };
+
+    setInterval("session_left()", 1000);
+    </script>
+</head>
+<body>
+         {% if user.is_authenticated %}
+             <p>Bem vindo {{ user.username }} !  <a id="acesso" href="logout">Sair</a></p>
+         {% endif %}
+
+         <!--<p>Data Hora: {{ logged_data_hora }} | <div id="session_left"> {{ expires }} </div>  </p>-->
+         <p>Data Hora: {{ logged_data_hora }} | {{ expires }}  </p>
+
+   <table  id="recursos" border ="1">
+  <tr>
+    <th>Clique para abrir o arquivo</th>
+  </tr>
+  <tr>
+    <td><a href=""/"> Junho</a></td>
+  </tr>
+  <tr>
+    <td><a href=""/"> Julho</a></td>
+  </tr>
+</table>
+
+
+</body>
+</html>

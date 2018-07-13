@@ -1,12 +1,26 @@
 {% load static %}
-<img src="{% static "img/poll.jpg" %}" alt="imagem"/>
 
-{% if poll_list %}
-    <ul>
-    {% for p in poll_list %}
-        <li><a href="/polls/{{ p.id }}/">{{ p.questao }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Nenhuma votacao disponivel.</p>
-{% endif %}
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href='{% static "css/estilo.css" %}'>
+   </head>
+   <body>
+    <div>
+
+       <a id="acesso" href="login">Entrar</a>
+       <img id ="fig_index" src='{% static "img/poll.jpg" %}' alt="imagem"/>
+
+        <h2>Itens para votação</h2>
+        {% if poll_list %}
+            <ul>
+            {% for p in poll_list %}
+                <li><a href="/polls/{{ p.id }}/">{{ p.questao }}</a></li>
+            {% endfor %}
+            </ul>
+    </div>
+        {% else %}
+            <p>Nenhuma votacao disponivel.</p>
+        {% endif %}
+
+   </body>
+</html>

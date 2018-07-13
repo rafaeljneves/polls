@@ -177,4 +177,3 @@ TEMPLATES = [{
     },
 }]
 
-LOGIN_REDIRECT_URL = '/time'

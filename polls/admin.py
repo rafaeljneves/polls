@@ -1,7 +1,7 @@
 __author__ = 'rafaelj'
 
 from django.contrib import admin
-
+from django.contrib.auth.models import User
 from polls.models import Poll, Choice
 
 
@@ -17,5 +17,6 @@ class PollAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
 
 admin.site.register(Poll, PollAdmin)
+
 
 

@@ -7,6 +7,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.template.response import TemplateResponse
 from polls.models import Poll, Choice
 from time import gmtime, strftime
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -48,7 +49,12 @@ def vote(request, poll_id):
         # return render(request, 'results.html', {'c':c})
 
 
-def hora_certa():
-    data_hora = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    html = "<html><body>Hora Certa: %s</body></html>" % data_hora
-    return HttpResponse(html)
+@login_required(login_url='/login/')
+def hora_certa(request):
+    request.session['member_id'] ='user_logged_in'
+    request.session.set_expiry(30) # 30 segundos
+    expires = request.session.get_expiry_age()
+    data_hora = strftime("%d/%m/%Y %H:%M:%S", gmtime())
+
+    return render(request, 'painel.html', {'logged_data_hora': data_hora, 'expires': expires})
+
